@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="myVideoTag" autoplay></video>
+    <script>
+        var myVideoArea = document.querySelector("#myVideoTag");
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        navigator.getUserMedia({
+            'audio': false,
+            'video': {
+                width: { min: 320, max: 320 },
+                height: { min: 240, max: 240 }
+            }
+        }, function (stream) {
+            myVideoArea.srcObject = stream;
+        }, function (error) { console.log(error) });
+    </script>
+</body>
+
+</html>
